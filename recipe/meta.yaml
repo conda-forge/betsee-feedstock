@@ -1,7 +1,7 @@
 {% set name = "betsee" %}
-{% set version = "0.9.0.0" %}
+{% set version = "0.9.1.0" %}
 {% set version_list = version.split('.') %}
-{% set sha256 = "6a84242193437fffe5fe1fc8615ad465a5e777367f7cb3cdfc7af4e60f56dc1f" %}
+{% set sha256 = "7b17df84b168deb6c81403d15265dc023109742c5149cf52c716492680d858ec" %}
 
 package:
   name: {{ name|lower }}
@@ -16,14 +16,14 @@ build:
   number: 0
   entry_points:
     - betsee = betsee.__main__:main
-  script: python -m pip install --no-deps --ignore-installed .
+  script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv"
   noarch: python
 
 requirements:
-  build:
-    - pip
+  host:
     - python >=3.5
     - setuptools >=3.3
+    - pip
   run:
     - python >=3.5
     - setuptools >=3.3
