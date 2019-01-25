@@ -1,7 +1,7 @@
 {% set name = "betsee" %}
-{% set version = "0.9.1.0" %}
+{% set version = "0.9.2.0" %}
 {% set version_list = version.split('.') %}
-{% set sha256 = "7b17df84b168deb6c81403d15265dc023109742c5149cf52c716492680d858ec" %}
+{% set sha256 = "62a8c63c8ddad29bcd8c88bcda960db3c2d28493c19192374dbb25fba1eb8e23" %}
 
 package:
   name: {{ name|lower }}
@@ -9,7 +9,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
