@@ -1,7 +1,7 @@
 {% set name = "betsee" %}
-{% set version = "0.9.2.0" %}
+{% set version = "1.0.0.0" %}
 {% set version_list = version.split('.') %}
-{% set sha256 = "62a8c63c8ddad29bcd8c88bcda960db3c2d28493c19192374dbb25fba1eb8e23" %}
+{% set sha256 = "5053eaf5c1ae720eb9ad9edc8655e9a6f474e221d4eeb10482fd272d80a4767c" %}
 
 package:
   name: {{ name|lower }}
