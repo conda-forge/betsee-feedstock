@@ -1,7 +1,7 @@
 {% set name = "betsee" %}
-{% set version = "1.0.0.0" %}
+{% set version = "1.1.0.0" %}
 {% set version_list = version.split('.') %}
-{% set sha256 = "5053eaf5c1ae720eb9ad9edc8655e9a6f474e221d4eeb10482fd272d80a4767c" %}
+{% set sha256 = "4b5f00fecab5fa8ea871935d0f8944b8671c60fad535c866bc61bf210fa9ab3e" %}
 
 package:
   name: {{ name|lower }}
@@ -27,7 +27,7 @@ requirements:
   run:
     - python >=3.5
     - setuptools >=3.3
-    - betse >={{ version_list[0] }}.{{ version_list[1] }}.{{ version_list[2] }}
+    - betse =={{ version_list[0] }}.{{ version_list[1] }}.{{ version_list[2] }}
     - pyside2
 
 test:
@@ -37,12 +37,25 @@ test:
     - betsee.lib
     - betsee.util
 
-  #FIXME: Reenable all of the following functional tests as soon as feasible. These tests
-  #*MUST* be temporarily disabled until the docker image used by CircleCI is revised to
-  #include the mandatory "mesa-libGL" dependency installing the "libGL.so.1" shared library
-  #required by Qt at runtime. See also:
-  #    https://github.com/conda-forge/betsee-feedstock/pull/4
-  #    https://circleci.com/gh/conda-forge/betsee-feedstock/14?utm_campaign=vcs-integration-link&utm_medium=referral&utm_source=github-build-link
+  #FIXME: Reenable all of the following functional tests as soon as feasible.
+  #These tests *MUST* be temporarily disabled until the docker image used by
+  #Microsoft Azure is revised to include the mandatory "mesa-libGL" dependency
+  #installing the "libGL.so.1" shared library required by Qt at runtime. Sadly,
+  #this appears unlikely as of 2020 Q1. Tracebacks resemble the following:
+  #
+  #    + betsee --help
+  #    Traceback (most recent call last):
+  #      File "/home/conda/feedstock_root/build_artifacts/betsee_1569639770770/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold/bin/betsee", line 10, in <module>
+  #        sys.exit(main())
+  #      File "/home/conda/feedstock_root/build_artifacts/betsee_1569639770770/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold/lib/python3.7/site-packages/betsee/__main__.py", line 93, in main
+  #        from betsee.guiappmeta import BetseeAppMeta
+  #      File "/home/conda/feedstock_root/build_artifacts/betsee_1569639770770/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold/lib/python3.7/site-packages/betsee/guiappmeta.py", line 24, in <module>
+  #        from betsee.lib.pyside2.cache.guipsdcache import CachePolicy
+  #      File "/home/conda/feedstock_root/build_artifacts/betsee_1569639770770/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold/lib/python3.7/site-packages/betsee/lib/pyside2/cache/guipsdcache.py", line 23, in <module>
+  #        from betsee.gui.simconf.stack.widget.guisimconfradiobtn import (
+  #      File "/home/conda/feedstock_root/build_artifacts/betsee_1569639770770/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold/lib/python3.7/site-packages/betsee/gui/simconf/stack/widget/guisimconfradiobtn.py", line 21, in <module>
+  #        from PySide2.QtWidgets import QButtonGroup, QRadioButton
+  #    ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 
   # commands:
   #   - betsee --help
@@ -55,14 +68,15 @@ about:
   license_file: LICENSE
   summary: BETSEE, the BioElectric Tissue Simulation Engine Environment
   description: |
-    BETSEE (BioElectric Tissue Simulation Engine Environment) is the open-source
-    cross-platform graphical user interface (GUI) for BETSE, a finite volume simulator for
-    2D computational multiphysics problems in the life sciences – including electrodiffusion,
-    electro-osmosis, galvanotaxis, voltage-gated ion channels, gene regulatory networks, and
-    biochemical reaction networks (e.g., metabolism). Like BETSE, BETSEE is portably
-    implemented in pure Python 3, continuously stress-tested with GitLab-CI × Appveyor +
-    py.test, and permissively distributed under the BSD 2-clause license.
-  doc_url: https://www.dropbox.com/s/n8qfms2oks9cvv2/BETSE04_Documentation_Dec1st2016.pdf?dl=0
+    BETSEE (BioElectric Tissue Simulation Engine Environment) is the
+    open-source cross-platform graphical user interface (GUI) for BETSE, a
+    finite volume simulator for 2D computational multiphysics problems in the
+    life sciences – including electrodiffusion, electro-osmosis, galvanotaxis,
+    voltage-gated ion channels, gene regulatory networks, and biochemical
+    reaction networks (e.g., metabolism). Like BETSE, BETSEE is portably
+    implemented in pure Python 3, continuously stress-tested with GitLab-CI ×
+    Appveyor + py.test, and permissively distributed under the BSD 2-clause
+    license.
   dev_url: https://gitlab.com/betse/betsee
 
 extra:
