@@ -1,7 +1,7 @@
 {% set name = "betsee" %}
-{% set version = "1.1.0.0" %}
+{% set version = "1.1.1.0" %}
 {% set version_list = version.split('.') %}
-{% set sha256 = "4b5f00fecab5fa8ea871935d0f8944b8671c60fad535c866bc61bf210fa9ab3e" %}
+{% set sha256 = "a5331f5bf5ace5794e60c91cda3e08f31beb5edde8ae99bee558a879d4167122" %}
 
 package:
   name: {{ name|lower }}
@@ -22,11 +22,11 @@ build:
 requirements:
   host:
     - python >=3.5
-    - setuptools >=3.3
+    - setuptools >=38.2.0
     - pip
   run:
     - python >=3.5
-    - setuptools >=3.3
+    - setuptools >=38.2.0
     - betse =={{ version_list[0] }}.{{ version_list[1] }}.{{ version_list[2] }}
     - pyside2
 
