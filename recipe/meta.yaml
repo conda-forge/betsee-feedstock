@@ -22,11 +22,11 @@ build:
 requirements:
   host:
     - python >=3.5
-    - setuptools >=3.3
+    - setuptools >=38.2.0
     - pip
   run:
     - python >=3.5
-    - setuptools >=3.3
+    - setuptools >=38.2.0
     - betse =={{ version_list[0] }}.{{ version_list[1] }}.{{ version_list[2] }}
     - pyside2
 
