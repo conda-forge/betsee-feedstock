@@ -13,7 +13,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - betsee = betsee.__main__:main
   script: "{{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv"
@@ -21,16 +21,18 @@ build:
 
 requirements:
   host:
-    - python >=3.5
+    - python {{ python_min }}
     - setuptools >=38.2.0
     - pip
   run:
-    - python >=3.5
+    - python >={{ python_min }}
     - setuptools >=38.2.0
     - betse =={{ version_list[0] }}.{{ version_list[1] }}.{{ version_list[2] }}
     - pyside2
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - betsee
     - betsee.cli
